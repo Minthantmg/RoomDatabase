@@ -3,10 +3,10 @@ package com.example.roomdatabase.fragments.List
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdatabase.R
-import com.example.roomdatabase.data.User
+import com.example.roomdatabase.model.User
 import kotlinx.android.synthetic.main.custom_layout.view.*
 
 
@@ -28,6 +28,11 @@ class listAdapter : RecyclerView.Adapter<listAdapter.MyViewHolder>() {
         holder.itemView.firstName_txt.text = currentItem.firstName
         holder.itemView.lastName_txt.text = currentItem.lastName
         holder.itemView.age_txt.text = currentItem.age.toString()
+
+        holder.itemView.rowLayout.setOnClickListener {
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

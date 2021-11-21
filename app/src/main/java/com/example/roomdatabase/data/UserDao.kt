@@ -16,5 +16,10 @@ interface UserDao {
     @Update
     fun updateUser(user : User)
 
+    @Delete
+    fun deleteUser(user : User)
+
+    @Query("DELETE FROM user_table")
+    fun deleteAllUser()
 
 }
